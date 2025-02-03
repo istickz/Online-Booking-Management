@@ -1,8 +1,7 @@
 "use client";
 
 import React, { FC, useEffect, useState } from "react";
-import AnyReactComponent from "@/components/AnyReactComponent/AnyReactComponent";
-import GoogleMapReact from "google-map-react";
+import { APIProvider, Map, AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
 import { DEMO_STAY_LISTINGS } from "@/data/listings";
 import ButtonClose from "@/shared/ButtonClose";
 import Checkbox from "@/shared/Checkbox";
@@ -17,6 +16,25 @@ export interface SectionGridHasMapProps {}
 const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
   const [currentHoverID, setCurrentHoverID] = useState<string | number>(-1);
   const [showFullMapFixed, setShowFullMapFixed] = useState(false);
+
+  interface MapMarkerProps {
+    stay: typeof DEMO_STAYS[0];
+    isSelected: boolean;
+  }
+
+  const MapMarker: FC<MapMarkerProps> = ({ stay, isSelected }) => {
+    return (
+      <AdvancedMarker position={{ lat: stay.map.lat, lng: stay.map.lng }}>
+        <div className={`relative ${isSelected ? "z-10" : "z-0"}`}>
+          <Pin 
+            background={isSelected ? "#000" : "#666"} 
+            borderColor={isSelected ? "#fff" : "#888"}
+            glyphColor="#fff"
+          />
+        </div>
+      </AdvancedMarker>
+    );
+  };
 
   return (
     <div>
@@ -74,24 +92,23 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
                 label="Search as I move the map"
               />
             </div>
-            <GoogleMapReact
-              defaultZoom={12}
-              defaultCenter={DEMO_STAYS[0].map}
-              bootstrapURLKeys={{
-                key: "AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY",
-              }}
-              yesIWantToUseGoogleMapApiInternals
-            >
-              {DEMO_STAYS.map((item) => (
-                <AnyReactComponent
-                  isSelected={currentHoverID === item.id}
-                  key={item.id}
-                  lat={item.map.lat}
-                  lng={item.map.lng}
-                  listing={item}
-                />
-              ))}
-            </GoogleMapReact>
+            <APIProvider apiKey="AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY">
+              <Map
+                defaultCenter={DEMO_STAYS[0].map}
+                defaultZoom={12}
+                gestureHandling={'greedy'}
+                disableDefaultUI={true}
+                style={{ width: '100%', height: '100%' }}
+              >
+                {DEMO_STAYS.map((item) => (
+                  <MapMarker
+                    key={item.id}
+                    stay={item}
+                    isSelected={currentHoverID === item.id}
+                  />
+                ))}
+              </Map>
+            </APIProvider>
           </div>
         </div>
       </div>

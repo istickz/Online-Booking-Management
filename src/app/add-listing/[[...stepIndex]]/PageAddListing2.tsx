@@ -1,9 +1,8 @@
 "use client";
 
 import { MapPinIcon } from "@heroicons/react/24/solid";
-import LocationMarker from "@/components/AnyReactComponent/LocationMarker";
 import Label from "@/components/Label";
-import GoogleMapReact from "google-map-react";
+import { APIProvider, Map, AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
 import React, { FC } from "react";
 import ButtonSecondary from "@/shared/ButtonSecondary";
 import Input from "@/shared/Input";
@@ -13,6 +12,34 @@ import FormItem from "../FormItem";
 export interface PageAddListing2Props {}
 
 const PageAddListing2: FC<PageAddListing2Props> = () => {
+  interface LocationMarkerProps {
+    position: {
+      lat: number;
+      lng: number;
+    };
+  }
+
+  const LocationMarker: FC<LocationMarkerProps> = ({ position }) => {
+    return (
+      <AdvancedMarker position={position}>
+        <div className="relative">
+          <Pin
+            background="#0ea5e9"
+            borderColor="#0369a1"
+            glyphColor="#fff"
+            scale={1.2}
+          />
+        </div>
+      </AdvancedMarker>
+    );
+  };
+
+  const defaultLocation = {
+    lat: 55.9607277,
+    lng: 36.2172614,
+  };
+  
+  
   return (
     <>
       <h2 className="text-2xl font-semibold">Your place location</h2>
@@ -60,19 +87,17 @@ const PageAddListing2: FC<PageAddListing2Props> = () => {
           <div className="mt-4">
             <div className="aspect-w-5 aspect-h-5 sm:aspect-h-3">
               <div className="rounded-xl overflow-hidden">
-                <GoogleMapReact
-                  bootstrapURLKeys={{
-                    key: "AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY",
-                  }}
-                  yesIWantToUseGoogleMapApiInternals
-                  defaultZoom={15}
-                  defaultCenter={{
-                    lat: 55.9607277,
-                    lng: 36.2172614,
-                  }}
-                >
-                  <LocationMarker lat={55.9607277} lng={36.2172614} />
-                </GoogleMapReact>
+              <APIProvider apiKey="AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY">
+                  <Map
+                    defaultCenter={defaultLocation}
+                    defaultZoom={15}
+                    gestureHandling={'greedy'}
+                    disableDefaultUI={true}
+                    style={{ width: '100%', height: '100%' }}
+                  >
+                    <LocationMarker position={defaultLocation} />
+                  </Map>
+                </APIProvider>
               </div>
             </div>
           </div>
