@@ -11,7 +11,13 @@ export interface CommonLayoutProps {
   };
 }
 
-const CommonLayout: FC<CommonLayoutProps> = ({ children, params }) => {
+const CommonLayout: FC<CommonLayoutProps> = async props => {
+  const params = await props.params;
+
+  const {
+    children
+  } = props;
+
   const index = Number(params.stepIndex) || 1;
   const nextHref = (
     index < 10 ? `/add-listing/${index + 1}` : `/add-listing/${1}`
