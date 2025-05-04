@@ -1,6 +1,6 @@
 "use client";
 
-import { Tab } from "@headlessui/react";
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import React, { FC, Fragment, useState } from "react";
 import visaPng from "@/images/vis.png";
@@ -158,8 +158,8 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
           <div className="w-14 border-b border-neutral-200 dark:border-neutral-700 my-5"></div>
 
           <div className="mt-6">
-            <Tab.Group>
-              <Tab.List className="flex my-5 gap-1">
+            <TabGroup>
+              <TabList className="flex my-5 gap-1">
                 <Tab as={Fragment}>
                   {({ selected }) => (
                     <button
@@ -192,10 +192,10 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
                     </button>
                   )}
                 </Tab>
-              </Tab.List>
+              </TabList>
 
-              <Tab.Panels>
-                <Tab.Panel className="space-y-5">
+              <TabPanels>
+                <TabPanel className="space-y-5">
                   <div className="space-y-1">
                     <Label>Card number </Label>
                     <Input defaultValue="111 112 222 999" />
@@ -221,8 +221,8 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
                       Write a few sentences about yourself.
                     </span>
                   </div>
-                </Tab.Panel>
-                <Tab.Panel className="space-y-5">
+                </TabPanel>
+                <TabPanel className="space-y-5">
                   <div className="space-y-1">
                     <Label>Email </Label>
                     <Input type="email" defaultValue="example@gmail.com" />
@@ -238,9 +238,9 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
                       Write a few sentences about yourself.
                     </span>
                   </div>
-                </Tab.Panel>
-              </Tab.Panels>
-            </Tab.Group>
+                </TabPanel>
+              </TabPanels>
+            </TabGroup>
             <div className="pt-8">
               <ButtonPrimary href={"/pay-done"}>Confirm and pay</ButtonPrimary>
             </div>

@@ -3,7 +3,7 @@
 import React, { Fragment, useState } from "react";
 import { FC } from "react";
 import DatePicker from "react-datepicker";
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import DatePickerCustomHeaderTwoMonth from "@/components/DatePickerCustomHeaderTwoMonth";
 import DatePickerCustomDay from "@/components/DatePickerCustomDay";
@@ -67,7 +67,7 @@ const RentalCarDatesRangeInput: FC<RentalCarDatesRangeInputProps> = ({
                 open ? "shadow-lg" : ""
               }`}
             >
-              <Popover.Button
+              <PopoverButton
                 className={`flex-1 flex relative p-3 items-center space-x-3 focus:outline-none `}
               >
                 {renderInput()}
@@ -75,7 +75,7 @@ const RentalCarDatesRangeInput: FC<RentalCarDatesRangeInputProps> = ({
                 {startDate && open && (
                   <ClearDataButton onClick={() => onChangeDate([null, null])} />
                 )}
-              </Popover.Button>
+              </PopoverButton>
             </div>
 
             <Transition
@@ -87,7 +87,7 @@ const RentalCarDatesRangeInput: FC<RentalCarDatesRangeInputProps> = ({
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-10 mt-3 top-full right-0 xl:-right-10 w-screen max-w-sm px-4 sm:px-0 lg:max-w-3xl">
+              <PopoverPanel className="absolute z-10 mt-3 top-full right-0 xl:-right-10 w-screen max-w-sm px-4 sm:px-0 lg:max-w-3xl">
                 <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-neutral-800 p-8">
                   <DatePicker
                     selected={startDate}
@@ -106,7 +106,7 @@ const RentalCarDatesRangeInput: FC<RentalCarDatesRangeInputProps> = ({
                     )}
                   />
                 </div>
-              </Popover.Panel>
+              </PopoverPanel>
             </Transition>
           </>
         )}

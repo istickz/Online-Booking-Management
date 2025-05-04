@@ -1,6 +1,6 @@
 import React, { FC, Fragment, useState } from "react";
 import CheckOutPagePageMain from "@/app/checkout/PageMain";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
 interface ModalReserveMobileProps {
@@ -40,7 +40,7 @@ const ModalReserveMobile: FC<ModalReserveMobileProps> = ({
         >
           <div className="fixed inset-0 bg-neutral-100 dark:bg-neutral-900">
             <div className="flex h-full">
-              <Transition.Child
+              <TransitionChild
                 as={Fragment}
                 enter="ease-out transition-transform"
                 enterFrom="opacity-0 translate-y-52"
@@ -49,7 +49,7 @@ const ModalReserveMobile: FC<ModalReserveMobileProps> = ({
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-52"
               >
-                <Dialog.Panel className="relative h-full flex-1 flex flex-col justify-between overflow-auto">
+                <DialogPanel className="relative h-full flex-1 flex flex-col justify-between overflow-auto">
                   <>
                     <div className="absolute left-4 top-4">
                       <button
@@ -66,8 +66,8 @@ const ModalReserveMobile: FC<ModalReserveMobileProps> = ({
                       </div>
                     </div>
                   </>
-                </Dialog.Panel>
-              </Transition.Child>
+                </DialogPanel>
+              </TransitionChild>
             </div>
           </div>
         </Dialog>

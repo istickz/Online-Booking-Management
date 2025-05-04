@@ -1,6 +1,6 @@
 "use client";
 import React, { Fragment, FC } from "react";
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import Checkbox from "@/shared/Checkbox";
 import { ClassOfProperties } from "../../type";
 import { HomeIcon } from "@heroicons/react/24/outline";
@@ -54,7 +54,7 @@ const PropertyTypeSelect: FC<PropertyTypeSelectProps> = ({
     <Popover className="flex relative flex-1">
       {({ open, close }) => (
         <>
-          <Popover.Button
+          <PopoverButton
             className={`flex z-10 text-left w-full flex-shrink-0 items-center ${fieldClassName} space-x-3 focus:outline-none cursor-pointer ${
               open ? "nc-hero-field-focused" : ""
             }`}
@@ -73,7 +73,7 @@ const PropertyTypeSelect: FC<PropertyTypeSelectProps> = ({
                 Property type
               </span>
             </div>
-          </Popover.Button>
+          </PopoverButton>
 
           {open && (
             <div className="h-8 absolute self-center top-1/2 -translate-y-1/2 z-0 -inset-x-0.5 bg-white dark:bg-neutral-800"></div>
@@ -88,7 +88,7 @@ const PropertyTypeSelect: FC<PropertyTypeSelectProps> = ({
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute left-0 z-10 w-full sm:min-w-[340px] max-w-sm bg-white dark:bg-neutral-800 top-full mt-3 py-5 sm:py-6 px-4 sm:px-8 rounded-3xl shadow-xl">
+            <PopoverPanel className="absolute left-0 z-10 w-full sm:min-w-[340px] max-w-sm bg-white dark:bg-neutral-800 top-full mt-3 py-5 sm:py-6 px-4 sm:px-8 rounded-3xl shadow-xl">
               <div className="">
                 <div className="relative flex flex-col space-y-5">
                   {typeOfProperty.map((item, index) => (
@@ -115,7 +115,7 @@ const PropertyTypeSelect: FC<PropertyTypeSelectProps> = ({
                   ))}
                 </div>
               </div>
-            </Popover.Panel>
+            </PopoverPanel>
           </Transition>
         </>
       )}

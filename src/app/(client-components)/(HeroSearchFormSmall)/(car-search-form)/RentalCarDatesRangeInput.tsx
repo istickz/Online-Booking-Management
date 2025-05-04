@@ -2,7 +2,7 @@
 
 import React, { Fragment, useState, FC } from "react";
 import DatePicker from "react-datepicker";
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import DatePickerCustomHeaderTwoMonth from "@/components/DatePickerCustomHeaderTwoMonth";
 import DatePickerCustomDay from "@/components/DatePickerCustomDay";
 import ClearDataButton from "../ClearDataButton";
@@ -67,7 +67,7 @@ const RentalCarDatesRangeInput: FC<RentalCarDatesRangeInputProps> = ({
                 open ? "nc-hero-field-focused--2" : ""
               }`}
             >
-              <Popover.Button
+              <PopoverButton
                 className={`flex-1 z-10 flex relative ${fieldClassName} items-center space-x-3 focus:outline-none `}
               >
                 {renderInput()}
@@ -75,7 +75,7 @@ const RentalCarDatesRangeInput: FC<RentalCarDatesRangeInputProps> = ({
                 {startDate && open && (
                   <ClearDataButton onClick={() => onChangeDate([null, null])} />
                 )}
-              </Popover.Button>
+              </PopoverButton>
 
               {/* BUTTON SUBMIT OF FORM */}
               {hasButtonSubmit && (
@@ -98,7 +98,7 @@ const RentalCarDatesRangeInput: FC<RentalCarDatesRangeInputProps> = ({
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute left-1/2 z-10 mt-3 top-full w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
+              <PopoverPanel className="absolute left-1/2 z-10 mt-3 top-full w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
                 <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-neutral-800 p-8">
                   <DatePicker
                     selected={startDate}
@@ -117,7 +117,7 @@ const RentalCarDatesRangeInput: FC<RentalCarDatesRangeInputProps> = ({
                     )}
                   />
                 </div>
-              </Popover.Panel>
+              </PopoverPanel>
             </Transition>
           </>
         )}

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FC, useState } from "react";
-import GoogleMapReact from "google-map-react";
+import { APIProvider, Map, AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
 import { DEMO_CAR_LISTINGS } from "@/data/listings";
 import ButtonClose from "@/shared/ButtonClose";
 import Checkbox from "@/shared/Checkbox";
@@ -9,7 +9,6 @@ import Pagination from "@/shared/Pagination";
 import TabFilters from "./TabFilters";
 import Heading2 from "@/shared/Heading2";
 import CarCardH from "@/components/CarCardH";
-import AnyReactComponent from "@/components/AnyReactComponent/AnyReactComponent";
 
 const DEMO_CARS = DEMO_CAR_LISTINGS.filter((_, i) => i < 12);
 
@@ -18,6 +17,25 @@ export interface SectionGridHasMapProps {}
 const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
   const [currentHoverID, setCurrentHoverID] = useState<string | number>(-1);
   const [showFullMapFixed, setShowFullMapFixed] = useState(false);
+
+  interface MapMarkerProps {
+    car: typeof DEMO_CARS[0];
+    isSelected: boolean;
+  }
+
+  const MapMarker: FC<MapMarkerProps> = ({ car, isSelected }) => {
+    return (
+      <AdvancedMarker position={{ lat: car.map.lat, lng: car.map.lng }}>
+        <div className={`relative ${isSelected ? "z-10" : "z-0"}`}>
+          <Pin 
+            background={isSelected ? "#000" : "#666"} 
+            borderColor={isSelected ? "#fff" : "#888"}
+            glyphColor="#fff"
+          />
+        </div>
+      </AdvancedMarker>
+    );
+  };
 
   return (
     <div>
@@ -84,24 +102,23 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = () => {
             </div>
             {/* BELLOW IS MY GOOGLE API KEY -- PLEASE DELETE AND TYPE YOUR API KEY */}
 
-            <GoogleMapReact
-              bootstrapURLKeys={{
-                key: "AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY",
-              }}
-              yesIWantToUseGoogleMapApiInternals
-              defaultZoom={12}
-              defaultCenter={DEMO_CARS[0].map}
-            >
-              {DEMO_CARS.map((item) => (
-                <AnyReactComponent
-                  isSelected={currentHoverID === item.id}
-                  key={item.id}
-                  lat={item.map.lat}
-                  lng={item.map.lng}
-                  car={item}
-                />
-              ))}
-            </GoogleMapReact>
+            <APIProvider apiKey="AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY">
+              <Map
+                defaultCenter={DEMO_CARS[0].map}
+                defaultZoom={12}
+                gestureHandling={'greedy'}
+                disableDefaultUI={true}
+                style={{ width: '100%', height: '100%' }}
+              >
+                {DEMO_CARS.map((item) => (
+                  <MapMarker
+                    key={item.id}
+                    car={item}
+                    isSelected={currentHoverID === item.id}
+                  />
+                ))}
+              </Map>
+            </APIProvider>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Popover, Tab, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Tab, TabGroup, TabList, TabPanels, TabPanel, Transition } from "@headlessui/react";
 import {
   BanknotesIcon,
   GlobeAltIcon,
@@ -109,7 +109,7 @@ const LangDropdown: FC<LangDropdownProps> = ({
       <Popover className={`LangDropdown relative ${className}`}>
         {({ open, close }) => (
           <>
-            <Popover.Button
+            <PopoverButton
               className={`
                 ${open ? "" : "text-opacity-80"}
              group self-center h-10 sm:h-12 px-3 py-1.5 inline-flex items-center text-sm text-gray-800 dark:text-neutral-200 font-medium hover:text-opacity-100 focus:outline-none `}
@@ -122,7 +122,7 @@ const LangDropdown: FC<LangDropdownProps> = ({
                   ml-1 h-4 w-4  group-hover:text-opacity-80 transition ease-in-out duration-150`}
                 aria-hidden="true"
               />
-            </Popover.Button>
+            </PopoverButton>
             <Transition
               as={Fragment}
               enter="transition ease-out duration-200"
@@ -132,10 +132,10 @@ const LangDropdown: FC<LangDropdownProps> = ({
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className={`absolute z-20  ${panelClassName}`}>
+              <PopoverPanel className={`absolute z-20  ${panelClassName}`}>
                 <div className="p-3 sm:p-6 rounded-2xl bg-white dark:bg-neutral-800 shadow-lg ring-1 ring-black ring-opacity-5">
-                  <Tab.Group>
-                    <Tab.List className="flex space-x-1 rounded-full bg-gray-100 dark:bg-slate-700 p-1">
+                  <TabGroup>
+                    <TabList className="flex space-x-1 rounded-full bg-gray-100 dark:bg-slate-700 p-1">
                       {["Language", "Currency"].map((category) => (
                         <Tab
                           key={category}
@@ -152,28 +152,28 @@ const LangDropdown: FC<LangDropdownProps> = ({
                           {category}
                         </Tab>
                       ))}
-                    </Tab.List>
-                    <Tab.Panels className="mt-5">
-                      <Tab.Panel
+                    </TabList>
+                    <TabPanels className="mt-5">
+                      <TabPanel
                         className={classNames(
                           "rounded-xl p-3",
                           "focus:outline-none focus:ring-0"
                         )}
                       >
                         {renderLang(close)}
-                      </Tab.Panel>
-                      <Tab.Panel
+                      </TabPanel>
+                      <TabPanel
                         className={classNames(
                           "rounded-xl p-3",
                           "focus:outline-none focus:ring-0"
                         )}
                       >
                         {renderCurr(close)}
-                      </Tab.Panel>
-                    </Tab.Panels>
-                  </Tab.Group>
+                      </TabPanel>
+                    </TabPanels>
+                  </TabGroup>
                 </div>
-              </Popover.Panel>
+              </PopoverPanel>
             </Transition>
           </>
         )}

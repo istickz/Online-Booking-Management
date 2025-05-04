@@ -3,7 +3,7 @@
 import React from "react";
 import ButtonClose from "@/shared/ButtonClose";
 import Logo from "@/shared/Logo";
-import { Disclosure } from "@headlessui/react";
+import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
 import { NavItemType } from "./NavigationItem";
 import { NAVIGATION_DEMO } from "@/data/navigation";
 import ButtonPrimary from "@/shared/ButtonPrimary";
@@ -43,7 +43,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
                   className="flex-1 flex"
                   onClick={(e) => e.preventDefault()}
                 >
-                  <Disclosure.Button
+                  <DisclosureButton
                     as="span"
                     className="py-2.5 flex justify-end flex-1"
                   >
@@ -51,12 +51,12 @@ const NavMobile: React.FC<NavMobileProps> = ({
                       className="ml-2 h-4 w-4 text-neutral-500"
                       aria-hidden="true"
                     />
-                  </Disclosure.Button>
+                  </DisclosureButton>
                 </span>
               )}
             </Link>
             {i.children && (
-              <Disclosure.Panel>{_renderMenuChild(i)}</Disclosure.Panel>
+              <DisclosurePanel>{_renderMenuChild(i)}</DisclosurePanel>
             )}
           </Disclosure>
         ))}
@@ -84,7 +84,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
           </span>
           {item.children && (
             <span className="flex-1 flex" onClick={(e) => e.preventDefault()}>
-              <Disclosure.Button
+              <DisclosureButton
                 as="span"
                 className="py-2.5 flex items-center justify-end flex-1 "
               >
@@ -92,12 +92,12 @@ const NavMobile: React.FC<NavMobileProps> = ({
                   className="ml-2 h-4 w-4 text-neutral-500"
                   aria-hidden="true"
                 />
-              </Disclosure.Button>
+              </DisclosureButton>
             </span>
           )}
         </Link>
         {item.children && (
-          <Disclosure.Panel>{_renderMenuChild(item)}</Disclosure.Panel>
+          <DisclosurePanel>{_renderMenuChild(item)}</DisclosurePanel>
         )}
       </Disclosure>
     );

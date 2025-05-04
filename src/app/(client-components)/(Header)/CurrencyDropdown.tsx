@@ -1,6 +1,6 @@
 "use client";
 
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import {
   CurrencyDollarIcon,
@@ -52,7 +52,7 @@ export default function CurrencyDropdown() {
       <Popover className="relative">
         {({ open, close }) => (
           <>
-            <Popover.Button
+            <PopoverButton
               className={`
                 ${open ? "" : "text-opacity-80"}
                 group px-3 py-1.5 border-neutral-300 hover:border-neutral-400 dark:border-neutral-700 rounded-full inline-flex items-center text-sm text-gray-700 dark:text-neutral-300 font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
@@ -64,7 +64,7 @@ export default function CurrencyDropdown() {
                   ml-2 h-4 w-4  group-hover:text-opacity-80 transition ease-in-out duration-150`}
                 aria-hidden="true"
               />
-            </Popover.Button>
+            </PopoverButton>
             <Transition
               as={Fragment}
               enter="transition ease-out duration-200"
@@ -74,7 +74,7 @@ export default function CurrencyDropdown() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-10 w-screen max-w-[140px] px-4 mt-4 right-0 sm:px-0">
+              <PopoverPanel className="absolute z-10 w-screen max-w-[140px] px-4 mt-4 right-0 sm:px-0">
                 <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black ring-opacity-5">
                   <div className="relative grid gap-7 bg-white dark:bg-neutral-800 p-7">
                     {headerCurrency.map((item, index) => (
@@ -94,7 +94,7 @@ export default function CurrencyDropdown() {
                     ))}
                   </div>
                 </div>
-              </Popover.Panel>
+              </PopoverPanel>
             </Transition>
           </>
         )}

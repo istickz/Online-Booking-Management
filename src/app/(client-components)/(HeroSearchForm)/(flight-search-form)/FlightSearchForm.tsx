@@ -2,7 +2,7 @@
 
 import React, { FC, useState } from "react";
 import LocationInput from "../LocationInput";
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { Fragment } from "react";
 import NcInputNumber from "@/components/NcInputNumber";
@@ -65,7 +65,7 @@ const FlightSearchForm: FC<FlightSearchFormProps> = ({}) => {
       <Popover className="relative">
         {({ open }) => (
           <>
-            <Popover.Button
+            <PopoverButton
               as="button"
               className={`
            ${open ? "" : ""}
@@ -78,7 +78,7 @@ const FlightSearchForm: FC<FlightSearchFormProps> = ({}) => {
                 } ml-2 h-4 w-4 group-hover:text-opacity-80 transition ease-in-out duration-150`}
                 aria-hidden="true"
               />
-            </Popover.Button>
+            </PopoverButton>
             <Transition
               as={Fragment}
               enter="transition ease-out duration-200"
@@ -88,7 +88,7 @@ const FlightSearchForm: FC<FlightSearchFormProps> = ({}) => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-20 w-full sm:min-w-[340px] max-w-sm bg-white dark:bg-neutral-800 top-full mt-3 left-1/2 -translate-x-1/2  py-5 sm:py-6 px-4 sm:px-8 rounded-3xl shadow-xl ring-1 ring-black/5 dark:ring-white/10">
+              <PopoverPanel className="absolute z-20 w-full sm:min-w-[340px] max-w-sm bg-white dark:bg-neutral-800 top-full mt-3 left-1/2 -translate-x-1/2  py-5 sm:py-6 px-4 sm:px-8 rounded-3xl shadow-xl ring-1 ring-black/5 dark:ring-white/10">
                 <NcInputNumber
                   className="w-full"
                   defaultValue={guestAdultsInputValue}
@@ -115,7 +115,7 @@ const FlightSearchForm: FC<FlightSearchFormProps> = ({}) => {
                   label="Infants"
                   desc="Ages 0–2"
                 />
-              </Popover.Panel>
+              </PopoverPanel>
             </Transition>
           </>
         )}
@@ -128,7 +128,7 @@ const FlightSearchForm: FC<FlightSearchFormProps> = ({}) => {
       <Popover className="relative">
         {({ open, close }) => (
           <>
-            <Popover.Button
+            <PopoverButton
               className={`
            ${open ? "" : ""}
             px-4 py-1.5 rounded-md inline-flex items-center font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 text-xs`}
@@ -140,7 +140,7 @@ const FlightSearchForm: FC<FlightSearchFormProps> = ({}) => {
                 } ml-2 h-4 w-4 group-hover:text-opacity-80 transition ease-in-out duration-150`}
                 aria-hidden="true"
               />
-            </Popover.Button>
+            </PopoverButton>
             <Transition
               as={Fragment}
               enter="transition ease-out duration-200"
@@ -150,7 +150,7 @@ const FlightSearchForm: FC<FlightSearchFormProps> = ({}) => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-20 w-screen max-w-[200px] sm:max-w-[220px] px-4 top-full mt-3 transform -translate-x-1/2 left-1/2 sm:px-0  ">
+              <PopoverPanel className="absolute z-20 w-screen max-w-[200px] sm:max-w-[220px] px-4 top-full mt-3 transform -translate-x-1/2 left-1/2 sm:px-0  ">
                 <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5 dark:ring-white/10 ">
                   <div className="relative grid gap-8 bg-white dark:bg-neutral-800 p-7 ">
                     {flightClass.map((item) => (
@@ -169,7 +169,7 @@ const FlightSearchForm: FC<FlightSearchFormProps> = ({}) => {
                     ))}
                   </div>
                 </div>
-              </Popover.Panel>
+              </PopoverPanel>
             </Transition>
           </>
         )}

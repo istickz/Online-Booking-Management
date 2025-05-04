@@ -1,10 +1,10 @@
 "use client";
 
-import { Dialog } from "@headlessui/react";
+import { Dialog, DialogPanel } from "@headlessui/react";
 import { motion } from "framer-motion";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
-import useKeypress from "react-use-keypress";
+import { useHotkeys } from "react-hotkeys-hook";
 import { getNewParam } from "../ListingImageGallery";
 import type { ListingGalleryImage } from "../utils/types";
 import SharedModal from "./SharedModal";
@@ -41,13 +41,13 @@ export default function Modal({
     router.push(`${thisPathname}/?${getNewParam({ value: newVal })}` as Route);
   }
 
-  useKeypress("ArrowRight", () => {
+  useHotkeys("ArrowRight", () => {
     if (index + 1 < images.length) {
       changePhotoId(index + 1);
     }
   });
 
-  useKeypress("ArrowLeft", () => {
+  useHotkeys("ArrowLeft", () => {
     if (index > 0) {
       changePhotoId(index - 1);
     }
@@ -62,22 +62,23 @@ export default function Modal({
         initialFocus={overlayRef}
         className="fixed inset-0 z-50 flex items-center justify-center "
       >
-        <Dialog.Overlay
+        <motion.div
           ref={overlayRef}
-          as={motion.div}
           key="backdrop"
           className="fixed inset-0 z-30 bg-black"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         />
-        <SharedModal
-          index={curIndex}
-          direction={direction}
-          images={images}
-          changePhotoId={changePhotoId}
-          closeModal={handleClose}
-          navigation={true}
-        />
+        <DialogPanel>
+          <SharedModal
+            index={curIndex}
+            direction={direction}
+            images={images}
+            changePhotoId={changePhotoId}
+            closeModal={handleClose}
+            navigation={true}
+          />
+        </DialogPanel>
       </Dialog>
     </>
   );

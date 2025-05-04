@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import { createGlobalState } from "react-hooks-global-state";
+import { createGlobalState } from "react-hooks-global-states";
 
-const initialState = { isDarkmode: false };
-const { useGlobalState } = createGlobalState(initialState);
+
+const useIsDarkMode = createGlobalState(false);
 
 export const useThemeMode = () => {
-  const [isDarkMode, setIsDarkMode] = useGlobalState("isDarkmode");
+  const [isDarkMode, setIsDarkMode] = useIsDarkMode();
 
   useEffect(() => {
     // Enbale this if you want use the dark-mode for default mode.

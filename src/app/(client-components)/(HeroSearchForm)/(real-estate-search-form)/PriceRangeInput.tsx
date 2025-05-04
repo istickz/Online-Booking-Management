@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Fragment, useState, FC } from "react";
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import Slider from "rc-slider";
 import convertNumbThousand from "@/utils/convertNumbThousand";
 import ButtonSubmit from "../ButtonSubmit";
@@ -27,7 +27,7 @@ const PriceRangeInput: FC<PriceRangeInputProps> = ({
               open ? "nc-hero-field-focused" : ""
             }`}
           >
-            <Popover.Button
+            <PopoverButton
               className={`flex-1 flex text-left items-center focus:outline-none ${fieldClassName} space-x-3 `}
               onClickCapture={() => document.querySelector("html")?.click()}
             >
@@ -44,7 +44,7 @@ const PriceRangeInput: FC<PriceRangeInputProps> = ({
                   Choose price range
                 </span>
               </div>
-            </Popover.Button>
+            </PopoverButton>
 
             {/* BUTTON SUBMIT OF FORM */}
             <div className="pr-2 xl:pr-4">
@@ -65,7 +65,7 @@ const PriceRangeInput: FC<PriceRangeInputProps> = ({
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute left-0 lg:right-0 z-10 w-full sm:min-w-[340px] max-w-sm bg-white dark:bg-neutral-800 top-full mt-3 py-5 sm:py-6 px-4 sm:px-8 rounded-3xl shadow-xl">
+            <PopoverPanel className="absolute left-0 lg:right-0 z-10 w-full sm:min-w-[340px] max-w-sm bg-white dark:bg-neutral-800 top-full mt-3 py-5 sm:py-6 px-4 sm:px-8 rounded-3xl shadow-xl">
               <div className="relative flex flex-col space-y-8">
                 <div className="space-y-5">
                   <span className="font-medium">Range Price </span>
@@ -126,7 +126,7 @@ const PriceRangeInput: FC<PriceRangeInputProps> = ({
                   </div>
                 </div>
               </div>
-            </Popover.Panel>
+            </PopoverPanel>
           </Transition>
         </>
       )}

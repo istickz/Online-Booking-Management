@@ -1,6 +1,6 @@
 "use client";
 
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { Fragment } from "react";
 import { PathName } from "@/routers/types";
@@ -47,7 +47,7 @@ export default function DropdownTravelers() {
     <Popover className="DropdownTravelers relative flex">
       {({ open, close }) => (
         <>
-          <Popover.Button
+          <PopoverButton
             className={`${open ? "" : "text-opacity-90"}
                 group self-center py-2 h-10 sm:h-12 rounded-md text-sm sm:text-base font-medium hover:text-opacity-100 focus:outline-none`}
           >
@@ -59,7 +59,7 @@ export default function DropdownTravelers() {
                 aria-hidden="true"
               />
             </div>
-          </Popover.Button>
+          </PopoverButton>
           <Transition
             as={Fragment}
             enter="transition ease-out duration-200"
@@ -69,7 +69,7 @@ export default function DropdownTravelers() {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute z-40 w-screen max-w-xs px-4 top-full transform -translate-x-1/2 left-1/2 sm:px-0">
+            <PopoverPanel className="absolute z-40 w-screen max-w-xs px-4 top-full transform -translate-x-1/2 left-1/2 sm:px-0">
               <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="relative grid grid-cols-1 gap-7 bg-white dark:bg-neutral-800 p-7 ">
                   {solutions.map((item, index) => (
@@ -110,7 +110,7 @@ export default function DropdownTravelers() {
                   </Link>
                 </div>
               </div>
-            </Popover.Panel>
+            </PopoverPanel>
           </Transition>
         </>
       )}

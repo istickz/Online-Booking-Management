@@ -1,18 +1,26 @@
 "use client";
 
-import BackgroundSection from "@/components/BackgroundSection";
+import { ReactNode, Suspense } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { Route } from "next";
 import ListingImageGallery from "@/components/listing-image-gallery/ListingImageGallery";
+import BackgroundSection from "@/components/BackgroundSection";
 import SectionSliderNewCategories from "@/components/SectionSliderNewCategories";
 import SectionSubscribe2 from "@/components/SectionSubscribe2";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { ReactNode } from "react";
 import MobileFooterSticky from "./(components)/MobileFooterSticky";
 import { imageGallery as listingStayImageGallery } from "./listing-stay-detail/constant";
 import { imageGallery as listingCarImageGallery } from "./listing-car-detail/constant";
 import { imageGallery as listingExperienceImageGallery } from "./listing-experiences-detail/constant";
-import { Route } from "next";
 
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
+  return (
+    <Suspense>
+      <DetailtLayoutContent children={children} />
+    </Suspense>
+  );
+};
+
+const DetailtLayoutContent = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const thisPathname = usePathname();
   const searchParams = useSearchParams();

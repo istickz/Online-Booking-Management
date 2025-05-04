@@ -1,7 +1,7 @@
 "use client";
 
 import { PathName } from "@/routers/types";
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
@@ -83,7 +83,7 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel
+              <PopoverPanel
                 static
                 className={`will-change-transform sub-menu absolute top-full transform z-10 w-screen max-w-sm px-4 sm:px-0 lg:max-w-max ${classPanel}`}
               >
@@ -108,7 +108,7 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
                     ))}
                   </div>
                 </div>
-              </Popover.Panel>
+              </PopoverPanel>
             </Transition>
           </>
         )}
@@ -155,7 +155,7 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel
+              <PopoverPanel
                 static
                 className="sub-menu will-change-transform absolute transform z-10 w-56 top-full left-0"
               >
@@ -175,7 +175,7 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
                     }
                   })}
                 </ul>
-              </Popover.Panel>
+              </PopoverPanel>
             </Transition>
           </>
         )}
@@ -206,7 +206,7 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel
+              <PopoverPanel
                 static
                 className="sub-menu absolute z-10 w-56 left-full pl-2 top-0"
               >
@@ -223,7 +223,7 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
                     }
                   })}
                 </ul>
-              </Popover.Panel>
+              </PopoverPanel>
             </Transition>
           </>
         )}

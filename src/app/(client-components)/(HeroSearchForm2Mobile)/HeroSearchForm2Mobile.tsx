@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Fragment, useState } from "react";
-import { Dialog, Tab, Transition } from "@headlessui/react";
+import { Dialog, DialogPanel, Tab, TabList, TabGroup, TabPanels, TabPanel, Transition, TransitionChild } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import ButtonSubmit from "./ButtonSubmit";
@@ -69,7 +69,7 @@ const HeroSearchForm2Mobile = () => {
         >
           <div className="fixed inset-0 bg-neutral-100 dark:bg-neutral-900">
             <div className="flex h-full">
-              <Transition.Child
+              <TransitionChild
                 as={Fragment}
                 enter="ease-out transition-transform"
                 enterFrom="opacity-0 translate-y-52"
@@ -78,16 +78,16 @@ const HeroSearchForm2Mobile = () => {
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-52"
               >
-                <Dialog.Panel className="relative h-full overflow-hidden flex-1 flex flex-col justify-between ">
+                <DialogPanel className="relative h-full overflow-hidden flex-1 flex flex-col justify-between ">
                   {showDialog && (
-                    <Tab.Group manual>
+                    <TabGroup manual>
                       <div className="absolute left-4 top-4">
                         <button className="" onClick={closeModal}>
                           <XMarkIcon className="w-5 h-5 text-black dark:text-white" />
                         </button>
                       </div>
 
-                      <Tab.List className="pt-12 flex w-full justify-center font-semibold text-sm sm:text-base text-neutral-500 dark:text-neutral-400 space-x-6 sm:space-x-8">
+                      <TabList className="pt-12 flex w-full justify-center font-semibold text-sm sm:text-base text-neutral-500 dark:text-neutral-400 space-x-6 sm:space-x-8">
                         {["Stay", "Experiences", "Cars", "Flights"].map(
                           (item, index) => (
                             <Tab key={index} as={Fragment}>
@@ -110,30 +110,30 @@ const HeroSearchForm2Mobile = () => {
                             </Tab>
                           )
                         )}
-                      </Tab.List>
+                      </TabList>
                       <div className="flex-1 pt-3 px-1.5 sm:px-4 flex overflow-hidden">
-                        <Tab.Panels className="flex-1 overflow-y-auto hiddenScrollbar py-4">
-                          <Tab.Panel>
+                        <TabPanels className="flex-1 overflow-y-auto hiddenScrollbar py-4">
+                          <TabPanel>
                             <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
                               <StaySearchForm />
                             </div>
-                          </Tab.Panel>
-                          <Tab.Panel>
+                          </TabPanel>
+                          <TabPanel>
                             <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
                               <StaySearchForm />
                             </div>
-                          </Tab.Panel>
-                          <Tab.Panel>
+                          </TabPanel>
+                          <TabPanel>
                             <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
                               <CarsSearchForm />
                             </div>
-                          </Tab.Panel>
-                          <Tab.Panel>
+                          </TabPanel>
+                          <TabPanel>
                             <div className="transition-opacity animate-[myblur_0.4s_ease-in-out]">
                               <FlightSearchForm />
                             </div>
-                          </Tab.Panel>
-                        </Tab.Panels>
+                          </TabPanel>
+                        </TabPanels>
                       </div>
                       <div className="px-4 py-3 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-700 flex justify-between">
                         <button
@@ -152,10 +152,10 @@ const HeroSearchForm2Mobile = () => {
                           }}
                         />
                       </div>
-                    </Tab.Group>
+                    </TabGroup>
                   )}
-                </Dialog.Panel>
-              </Transition.Child>
+                </DialogPanel>
+              </TransitionChild>
             </div>
           </div>
         </Dialog>

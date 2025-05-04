@@ -2,8 +2,10 @@
 const nextConfig = {
   reactStrictMode: false,
   experimental: {
-    appDir: true,
-    typedRoutes: true,
+    staleTimes: {
+      dynamic: 30,
+      static: 180,
+    },
   },
   images: {
     remotePatterns: [
