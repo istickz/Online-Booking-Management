@@ -16,6 +16,7 @@ export default function downloadPhoto(url: string, filename: string) {
       Origin: location.origin,
     }),
     mode: "cors",
+    cache: 'no-store'
   })
     .then((response) => response.blob())
     .then((blob) => {
