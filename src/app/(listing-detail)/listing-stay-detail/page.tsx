@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FC, Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition, TransitionChild } from "@headlessui/react";
 import { ArrowRightIcon, Squares2X2Icon } from "@heroicons/react/24/outline";
 import CommentListing from "@/components/CommentListing";
 import FiveStartIconForRate from "@/components/FiveStartIconForRate";
@@ -182,7 +182,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
           onClose={closeModalAmenities}
         >
           <div className="min-h-screen px-4 text-center">
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="ease-out duration-300"
               enterFrom="opacity-0"
@@ -191,8 +191,8 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-40" />
-            </Transition.Child>
+              <div className="fixed inset-0 bg-black bg-opacity-40" />
+            </TransitionChild>
 
             {/* This element is to trick the browser into centering the modal contents. */}
             <span
@@ -201,7 +201,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
             >
               &#8203;
             </span>
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="ease-out duration-300"
               enterFrom="opacity-0 scale-95"
@@ -238,7 +238,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
                   </div>
                 </div>
               </div>
-            </Transition.Child>
+            </TransitionChild>
           </div>
         </Dialog>
       </Transition>

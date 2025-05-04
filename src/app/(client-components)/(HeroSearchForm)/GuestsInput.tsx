@@ -1,7 +1,7 @@
 "use client";
 
-import React, { Fragment, useEffect, useState } from "react";
-import { Popover, Transition } from "@headlessui/react";
+import React, { Fragment, useState } from "react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import NcInputNumber from "@/components/NcInputNumber";
 import { FC } from "react";
 import ClearDataButton from "./ClearDataButton";
@@ -59,7 +59,7 @@ const GuestsInput: FC<GuestsInputProps> = ({
               open ? "nc-hero-field-focused" : ""
             }`}
           >
-            <Popover.Button
+            <PopoverButton
               className={`relative z-10 flex-1 flex text-left items-center ${fieldClassName} space-x-3 focus:outline-none`}
             >
               <div className="text-neutral-300 dark:text-neutral-400">
@@ -83,7 +83,7 @@ const GuestsInput: FC<GuestsInputProps> = ({
                   }}
                 />
               )}
-            </Popover.Button>
+            </PopoverButton>
 
             {/* BUTTON SUBMIT OF FORM */}
             {hasButtonSubmit && (
@@ -105,7 +105,7 @@ const GuestsInput: FC<GuestsInputProps> = ({
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute right-0 z-10 w-full sm:min-w-[340px] max-w-sm bg-white dark:bg-neutral-800 top-full mt-3 py-5 sm:py-6 px-4 sm:px-8 rounded-3xl shadow-xl">
+            <PopoverPanel className="absolute right-0 z-10 w-full sm:min-w-[340px] max-w-sm bg-white dark:bg-neutral-800 top-full mt-3 py-5 sm:py-6 px-4 sm:px-8 rounded-3xl shadow-xl">
               <NcInputNumber
                 className="w-full"
                 defaultValue={guestAdultsInputValue}
@@ -132,7 +132,7 @@ const GuestsInput: FC<GuestsInputProps> = ({
                 label="Infants"
                 desc="Ages 0–2"
               />
-            </Popover.Panel>
+            </PopoverPanel>
           </Transition>
         </>
       )}

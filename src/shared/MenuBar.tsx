@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useEffect } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
 import NavMobile from "./Navigation/NavMobile";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { usePathname } from "next/navigation";
@@ -34,7 +34,7 @@ const MenuBar: React.FC<MenuBarProps> = ({
 
       <Transition appear show={isVisible} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={handleCloseMenu}>
-          <Transition.Child
+          <TransitionChild
             as={Fragment}
             enter="transition-opacity duration-300"
             enterFrom="opacity-0"
@@ -44,11 +44,11 @@ const MenuBar: React.FC<MenuBarProps> = ({
             leaveTo="opacity-0"
           >
             <div className="fixed inset-0 bg-black/60 dark:bg-black/70" />
-          </Transition.Child>
+          </TransitionChild>
 
           <div className="fixed inset-0">
             <div className="flex justify-end min-h-full">
-              <Transition.Child
+              <TransitionChild
                 as={Fragment}
                 enter="transition transform duration-100"
                 enterFrom="translate-x-56 opacity-0"
@@ -57,10 +57,10 @@ const MenuBar: React.FC<MenuBarProps> = ({
                 leaveFrom="translate-x-0 opacity-100"
                 leaveTo="translate-x-56 opacity-0"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden transition-all">
+                <DialogPanel className="w-full max-w-md transform overflow-hidden transition-all">
                   <NavMobile onClickClose={handleCloseMenu} />
-                </Dialog.Panel>
-              </Transition.Child>
+                </DialogPanel>
+              </TransitionChild>
             </div>
           </div>
         </Dialog>

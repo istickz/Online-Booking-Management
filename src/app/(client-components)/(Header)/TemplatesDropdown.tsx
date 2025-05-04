@@ -1,4 +1,4 @@
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { Fragment } from "react";
 import { NAVIGATION_DEMO_2 } from "@/data/navigation";
@@ -34,7 +34,7 @@ export default function TemplatesDropdown() {
       <Popover className="TemplatesDropdown hidden lg:block self-center">
         {({ open, close }) => (
           <>
-            <Popover.Button
+            <PopoverButton
               className={`
                 ${open ? "" : "text-opacity-80"}
                 group h-10 sm:h-12 px-3 py-1.5 inline-flex items-center text-sm text-gray-800 dark:text-slate-300 font-medium hover:text-opacity-100 focus:outline-none `}
@@ -45,7 +45,7 @@ export default function TemplatesDropdown() {
                   ml-1 h-4 w-4 transition ease-in-out duration-150 `}
                 aria-hidden="true"
               />
-            </Popover.Button>
+            </PopoverButton>
             <Transition
               as={Fragment}
               enter="transition ease-out duration-200"
@@ -55,7 +55,7 @@ export default function TemplatesDropdown() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-20 top-full w-full inset-x-0">
+              <PopoverPanel className="absolute z-20 top-full w-full inset-x-0">
                 <div className="bg-white dark:bg-neutral-900 shadow-lg">
                   <div className="container">
                     <div className="flex text-sm border-t border-slate-200 dark:border-slate-700 py-14">
@@ -79,7 +79,7 @@ export default function TemplatesDropdown() {
                     </div>
                   </div>
                 </div>
-              </Popover.Panel>
+              </PopoverPanel>
             </Transition>
           </>
         )}

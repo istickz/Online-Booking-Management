@@ -1,6 +1,6 @@
 "use client";
 
-import { Tab } from "@headlessui/react";
+import { Tab, TabGroup, TabList, TabPanels, TabPanel } from "@headlessui/react";
 import CarCard from "@/components/CarCard";
 import CommentListing from "@/components/CommentListing";
 import ExperiencesCard from "@/components/ExperiencesCard";
@@ -129,8 +129,8 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
 
         <div>
-          <Tab.Group>
-            <Tab.List className="flex space-x-1 overflow-x-auto">
+          <TabGroup>
+            <TabList className="flex space-x-1 overflow-x-auto">
               {categories.map((item) => (
                 <Tab key={item} as={Fragment}>
                   {({ selected }) => (
@@ -146,9 +146,9 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
                   )}
                 </Tab>
               ))}
-            </Tab.List>
-            <Tab.Panels>
-              <Tab.Panel className="">
+            </TabList>
+            <TabPanels>
+              <TabPanel className="">
                 <div className="mt-8 grid grid-cols-1 gap-6 md:gap-7 sm:grid-cols-2">
                   {DEMO_STAY_LISTINGS.filter((_, i) => i < 4).map((stay) => (
                     <StayCard key={stay.id} data={stay} />
@@ -157,8 +157,8 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
                 <div className="flex mt-11 justify-center items-center">
                   <ButtonSecondary>Show me more</ButtonSecondary>
                 </div>
-              </Tab.Panel>
-              <Tab.Panel className="">
+              </TabPanel>
+              <TabPanel className="">
                 <div className="mt-8 grid grid-cols-1 gap-6 md:gap-7 sm:grid-cols-2">
                   {DEMO_EXPERIENCES_LISTINGS.filter((_, i) => i < 4).map(
                     (stay) => (
@@ -169,8 +169,8 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
                 <div className="flex mt-11 justify-center items-center">
                   <ButtonSecondary>Show me more</ButtonSecondary>
                 </div>
-              </Tab.Panel>
-              <Tab.Panel className="">
+              </TabPanel>
+              <TabPanel className="">
                 <div className="mt-8 grid grid-cols-1 gap-6 md:gap-7 sm:grid-cols-2">
                   {DEMO_CAR_LISTINGS.filter((_, i) => i < 4).map((stay) => (
                     <CarCard key={stay.id} data={stay} />
@@ -179,9 +179,9 @@ const AuthorPage: FC<AuthorPageProps> = ({}) => {
                 <div className="flex mt-11 justify-center items-center">
                   <ButtonSecondary>Show me more</ButtonSecondary>
                 </div>
-              </Tab.Panel>
-            </Tab.Panels>
-          </Tab.Group>
+              </TabPanel>
+            </TabPanels>
+          </TabGroup>
         </div>
       </div>
     );

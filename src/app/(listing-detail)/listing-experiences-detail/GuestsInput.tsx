@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Fragment, FC, useState } from "react";
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import NcInputNumber from "@/components/NcInputNumber";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
 import ClearDataButton from "@/app/(client-components)/(HeroSearchForm)/ClearDataButton";
@@ -48,7 +48,7 @@ const GuestsInput: FC<GuestsInputProps> = ({ className = "flex-1" }) => {
               open ? "shadow-lg" : ""
             }`}
           >
-            <Popover.Button
+            <PopoverButton
               className={`relative z-10 flex-1 flex text-left items-center p-3 space-x-3 focus:outline-none`}
             >
               <div className="text-neutral-300 dark:text-neutral-400">
@@ -72,7 +72,7 @@ const GuestsInput: FC<GuestsInputProps> = ({ className = "flex-1" }) => {
                   }}
                 />
               )}
-            </Popover.Button>
+            </PopoverButton>
           </div>
 
           <Transition
@@ -84,7 +84,7 @@ const GuestsInput: FC<GuestsInputProps> = ({ className = "flex-1" }) => {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute right-0 z-10 w-full sm:min-w-[340px] max-w-sm bg-white dark:bg-neutral-800 top-full mt-3 py-5 sm:py-6 px-4 sm:px-8 rounded-3xl shadow-xl ring-1 ring-black ring-opacity-5 ">
+            <PopoverPanel className="absolute right-0 z-10 w-full sm:min-w-[340px] max-w-sm bg-white dark:bg-neutral-800 top-full mt-3 py-5 sm:py-6 px-4 sm:px-8 rounded-3xl shadow-xl ring-1 ring-black ring-opacity-5 ">
               <NcInputNumber
                 className="w-full"
                 defaultValue={guestAdultsInputValue}
@@ -111,7 +111,7 @@ const GuestsInput: FC<GuestsInputProps> = ({ className = "flex-1" }) => {
                 label="Infants"
                 desc="Ages 0–2"
               />
-            </Popover.Panel>
+            </PopoverPanel>
           </Transition>
         </>
       )}

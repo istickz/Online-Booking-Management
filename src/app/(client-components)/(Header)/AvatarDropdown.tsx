@@ -1,4 +1,4 @@
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import Avatar from "@/shared/Avatar";
 import SwitchDarkMode2 from "@/shared/SwitchDarkMode2";
@@ -13,11 +13,11 @@ export default function AvatarDropdown({ className = "" }: Props) {
       <Popover className={`AvatarDropdown relative flex ${className}`}>
         {({ open, close }) => (
           <>
-            <Popover.Button
+            <PopoverButton
               className={`self-center w-10 h-10 sm:w-12 sm:h-12 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none flex items-center justify-center`}
             >
               <Avatar sizeClass="w-8 h-8 sm:w-9 sm:h-9" />
-            </Popover.Button>
+            </PopoverButton>
             <Transition
               as={Fragment}
               enter="transition ease-out duration-200"
@@ -27,7 +27,7 @@ export default function AvatarDropdown({ className = "" }: Props) {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-10 w-screen max-w-[260px] px-4 top-full -right-10 sm:right-0 sm:px-0">
+              <PopoverPanel className="absolute z-10 w-screen max-w-[260px] px-4 top-full -right-10 sm:right-0 sm:px-0">
                 <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5">
                   <div className="relative grid grid-cols-1 gap-6 bg-white dark:bg-neutral-800 py-7 px-6">
                     <div className="flex items-center space-x-3">
@@ -304,7 +304,7 @@ export default function AvatarDropdown({ className = "" }: Props) {
                     </Link>
                   </div>
                 </div>
-              </Popover.Panel>
+              </PopoverPanel>
             </Transition>
           </>
         )}

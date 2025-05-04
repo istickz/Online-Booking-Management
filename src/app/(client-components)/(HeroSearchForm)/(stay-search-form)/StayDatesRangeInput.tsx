@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Fragment, useState, FC } from "react";
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import DatePickerCustomHeaderTwoMonth from "@/components/DatePickerCustomHeaderTwoMonth";
 import DatePickerCustomDay from "@/components/DatePickerCustomDay";
@@ -61,7 +61,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
     <Popover className={`StayDatesRangeInput z-10 relative flex ${className}`}>
       {({ open }) => (
         <>
-          <Popover.Button
+          <PopoverButton
             className={`flex-1 z-10 flex relative ${fieldClassName} items-center space-x-3 focus:outline-none ${
               open ? "nc-hero-field-focused" : ""
             }`}
@@ -70,7 +70,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
             {startDate && open && (
               <ClearDataButton onClick={() => onChangeDate([null, null])} />
             )}
-          </Popover.Button>
+          </PopoverButton>
 
           {open && (
             <div className="h-8 absolute self-center top-1/2 -translate-y-1/2 z-0 -inset-x-0.5 bg-white dark:bg-neutral-800"></div>
@@ -85,7 +85,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute left-1/2 z-10 mt-3 top-full w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
+            <PopoverPanel className="absolute left-1/2 z-10 mt-3 top-full w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
               <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-neutral-800 p-8">
                 <DatePicker
                   selected={startDate}
@@ -104,7 +104,7 @@ const StayDatesRangeInput: FC<StayDatesRangeInputProps> = ({
                   )}
                 />
               </div>
-            </Popover.Panel>
+            </PopoverPanel>
           </Transition>
         </>
       )}

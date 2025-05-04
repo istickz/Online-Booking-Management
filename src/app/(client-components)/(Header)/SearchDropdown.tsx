@@ -1,6 +1,6 @@
 "use client";
 
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import Input from "@/shared/Input";
 import React, { FC, Fragment } from "react";
 
@@ -23,9 +23,9 @@ const SearchDropdown: FC<Props> = ({ className = "" }) => {
 
           return (
             <>
-              <Popover.Button className="text-2xl md:text-[28px] w-12 h-12 rounded-full text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none flex items-center justify-center">
+              <PopoverButton className="text-2xl md:text-[28px] w-12 h-12 rounded-full text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none flex items-center justify-center">
                 <i className="las la-search"></i>
-              </Popover.Button>
+              </PopoverButton>
 
               <Transition
                 show={open}
@@ -37,7 +37,7 @@ const SearchDropdown: FC<Props> = ({ className = "" }) => {
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-1"
               >
-                <Popover.Panel
+                <PopoverPanel
                   static
                   className="absolute right-0 z-10 top-full w-screen max-w-sm"
                 >
@@ -50,7 +50,7 @@ const SearchDropdown: FC<Props> = ({ className = "" }) => {
                     />
                     <input type="submit" hidden value="" />
                   </form>
-                </Popover.Panel>
+                </PopoverPanel>
               </Transition>
             </>
           );

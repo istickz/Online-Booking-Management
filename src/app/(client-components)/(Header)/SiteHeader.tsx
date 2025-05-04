@@ -2,10 +2,9 @@
 
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import {
-  ShoppingBagIcon as ShoppingCartIcon,
   Cog8ToothIcon as CogIcon,
 } from "@heroicons/react/24/outline";
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverPanel, PopoverButton, Transition } from "@headlessui/react";
 import { PathName } from "@/routers/types";
 import Link from "next/link";
 import Header from "./Header";
@@ -133,13 +132,13 @@ const SiteHeader = () => {
           <Popover className="relative">
             {({ open }) => (
               <>
-                <Popover.Button
+                <PopoverButton
                   className={`p-2.5 bg-white hover:bg-neutral-100 dark:bg-primary-6000 dark:hover:bg-primary-700 rounded-xl shadow-xl border border-neutral-200 dark:border-primary-6000 z-10 focus:outline-none ${
                     open ? " focus:ring-2 ring-primary-500" : ""
                   }`}
                 >
                   <CogIcon className="w-8 h-8" />
-                </Popover.Button>
+                </PopoverButton>
                 <Transition
                   as={Fragment}
                   enter="transition ease-out duration-200"
@@ -149,7 +148,7 @@ const SiteHeader = () => {
                   leaveFrom="opacity-100 translate-y-0"
                   leaveTo="opacity-0 translate-y-1"
                 >
-                  <Popover.Panel className="absolute right-0 z-10 mt-3 w-screen max-w-sm">
+                  <PopoverPanel className="absolute right-0 z-10 mt-3 w-screen max-w-sm">
                     <div className="rounded-2xl bg-white dark:bg-neutral-800 overflow-hidden nc-custom-shadow-1">
                       <div className="relative p-6">
                         <span className="text-xl font-semibold">Customize</span>
@@ -159,7 +158,7 @@ const SiteHeader = () => {
                       </div>
                     
                     </div>
-                  </Popover.Panel>
+                  </PopoverPanel>
                 </Transition>
               </>
             )}
