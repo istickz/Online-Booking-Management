@@ -6,12 +6,12 @@ import { Route } from "@/routers/types";
 
 export interface CommonLayoutProps {
   children: React.ReactNode;
-  params: {
+  params: Promise<{
     stepIndex: string;
-  };
+  }>;
 }
 
-const CommonLayout: FC<CommonLayoutProps> = async props => {
+const CommonLayout = async (props: CommonLayoutProps) => {
   const params = await props.params;
 
   const {
