@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Fragment, useState } from "react";
-import { Dialog, DialogTitle, Popover, PopoverPanel, PopoverButton, Tab, TabPanels, TabPanel, TabList, TabGroup, Transition, TransitionChild } from "@headlessui/react";
+import { Dialog, DialogPanel, DialogTitle, Popover, PopoverPanel, PopoverButton, Tab, TabPanels, TabPanel, TabList, TabGroup, Transition, TransitionChild } from "@headlessui/react";
 import ButtonPrimary from "@/shared/ButtonPrimary";
 import ButtonThird from "@/shared/ButtonThird";
 import ButtonClose from "@/shared/ButtonClose";
@@ -682,7 +682,7 @@ const TabFilters = () => {
                 leaveTo="opacity-0 scale-95"
               >
                 <div className="inline-block py-8 px-2 h-screen w-full max-w-4xl">
-                  <div className="inline-flex flex-col w-full max-w-4xl text-left align-middle transition-all transform overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 dark:border dark:border-neutral-700 dark:text-neutral-100 shadow-xl h-full">
+                  <DialogPanel className="inline-flex flex-col w-full max-w-4xl text-left align-middle transition-all transform overflow-hidden rounded-2xl bg-white dark:bg-neutral-900 dark:border dark:border-neutral-700 dark:text-neutral-100 shadow-xl h-full">
                     <div className="relative flex-shrink-0 px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 text-center">
                       <DialogTitle
                         as="h3"
@@ -826,7 +826,7 @@ const TabFilters = () => {
                         Apply
                       </ButtonPrimary>
                     </div>
-                  </div>
+                  </DialogPanel>
                 </div>
               </TransitionChild>
             </div>
